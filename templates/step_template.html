@@ -1,18 +1,20 @@
 <div class="step <%= status %>">
     <%= name %>
-    <% if (dataTable) { %>
+    <% if (dataTable.length > 0) { %> 	 
     <table class="table">
-        <% for(var row in dataTable) { %>
-        <tr>
-        <% for(var cell in dataTable[row].cells) { %>
-            <% if (Number(row) === 0) { %>
-                <th><%= dataTable[row].cells[cell] %></th>
-            <% } else { %>
-                <td><%= dataTable[row].cells[cell] %></td>
-            <% } %>
-        <% } %>
-        </tr>
-        <% } %>
+	    <% for(var data in dataTable) { %>		   
+			<% for(var row in dataTable[data].rows) { %>
+					<tr>
+					<% for(var cell in dataTable[data].rows[row].cells) { %>
+						<% if (Number(row) === 0) { %>
+							<th><%= dataTable[data].rows[row].cells[cell] %></th>
+						<% } else { %>
+							<td><%= dataTable[data].rows[row].cells[cell] %></td>
+						<% } %>
+					<% } %>
+					</tr>
+			<% } %>
+		<% } %>	
     </table>
     <% } %>
     <% if (errorDetails) { %>
